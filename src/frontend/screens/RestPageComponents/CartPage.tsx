@@ -57,7 +57,7 @@ const CartPage: React.FC = () => {
   };
 
   const checkLogin = async (service: string) => {
-    let fetchAddr = "${API_BASE_URL}/api/auth/app-status";
+    let fetchAddr = `${API_BASE_URL}/api/auth/app-status`;
     
     try {
       const res = await fetch(fetchAddr, {
@@ -124,7 +124,7 @@ const CartPage: React.FC = () => {
 
     try {
       let response;
-      var fetchAddr = "${API_BASE_URL}/api/auth/app-login";
+      var fetchAddr = `${API_BASE_URL}/api/auth/app-login`;
       response = await fetch(fetchAddr, {
         method: "POST",
         headers: {
@@ -183,7 +183,7 @@ const CartPage: React.FC = () => {
       const user = JSON.parse(userData);
       const token = user.token;
 
-      const response = await fetch('${API_BASE_URL}/api/cartroute/cart/create', {
+      const response = await fetch(`${API_BASE_URL}/api/cartroute/cart/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -68,7 +68,7 @@ export default function PopularCards({fetchType}) {
         console.log("Searching for: " + name);
         try {
             // Send the request to your backend API
-            const response = await fetch('${API_BASE_URL}/api/searchRestaurant?name=' + encodeURIComponent(name));
+            const response = await fetch(`${API_BASE_URL}/api/searchRestaurant?name=` + encodeURIComponent(name));
                 
             // Check if the response is OK and parse JSON
             if (response.ok) {

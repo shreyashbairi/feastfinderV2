@@ -30,7 +30,7 @@ const ChatSupport = ({ open, setOpen }) => {
 
   
     try {
-      const response = await axios.post('${API_BASE_URL}/api/chat', {
+      const response = await axios.post(`${API_BASE_URL}/api/chat`, {
         messages: updatedMessages,
       });
   

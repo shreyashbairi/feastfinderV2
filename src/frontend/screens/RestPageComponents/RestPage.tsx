@@ -135,7 +135,7 @@ export default function RestPage() {
     }
 
     try {
-      const fetchAddr = '${API_BASE_URL}/api/auth/app-deal';
+      const fetchAddr = `${API_BASE_URL}/api/auth/app-deal`;
       const response = await fetch(fetchAddr, {
         method: 'GET',
         headers: {
