@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Image, View } from 'react-native'
+import { API_BASE_URL } from '../../../config.js';
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ export default function SignUp() {
         const username = email.split('@')[0]; // Create username from email
 
         try {
-            const response = await fetch('http://localhost:5001/api/auth/register', {
+            const response = await fetch('${API_BASE_URL}/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

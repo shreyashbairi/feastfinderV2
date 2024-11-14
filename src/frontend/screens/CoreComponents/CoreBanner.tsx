@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ffColors } from './CoreStyles.tsx';
 import CoreDrawer from './CoreDrawer.tsx';
-
+import { API_BASE_URL } from '../../../config.js';
 interface Props {
     searchVal?: string;
 }
@@ -42,62 +42,6 @@ const timeRangeMapping = {
         }
     }
 
-    // // Send search query, search type, and filters to the backend
-    // const keyHandler = async (event) => {
-    //     if (event.key === 'Enter' && searchValue !== '') {
-    //         const selectedTimeRanges = Object.keys(timeRanges).filter((range) => timeRanges[range]);
-    //         console.log(`Searching for: ${searchValue}, Type: ${searchType}, Service: ${deliveryService}, Cuisine: ${cuisine}, and Time Ranges: ${selectedTimeRanges}`);
-
-    //         try {
-    //             let response;
-    //             if (searchType === 'restaurant') {
-    //                 response = await fetch(`http://localhost:5001/api/searchRestaurant?name=${searchValue}`);
-    //             } else if (searchType === 'dish') {
-    //                 response = await fetch(`http://localhost:5001/api/searchDish?name=${searchValue}`);
-    //             }
-    //             if (response.ok) {
-    //                 const results = await response.json();
-    //                 console.log('Results Found:', results);
-    //                 navigate('/Search', { 
-    //                     state: { 
-    //                         //restaurants: results, 
-    //                         search: searchValue, 
-    //                         results, 
-    //                         searchType, 
-    //                         deliveryService, 
-    //                         cuisine, 
-    //                         timeRanges: selectedTimeRanges  
-    //                     } 
-    //                 });
-    //             } else {
-    //                 console.log('No results found');
-    //                 navigate('/Search', { state: { 
-    //                     search: searchValue, 
-    //                     results: [], 
-    //                     searchType, 
-    //                     deliveryService, 
-    //                     cuisine, 
-    //                     timeRanges: selectedTimeRanges, 
-    //                     errorText: 'No results found' } });
-    //                 // Eventually, navigate should reflect above
-    //             }
-    //         } catch (error) {
-    //             console.error('Error fetching results:', error);
-    //             navigate('/Search', { 
-    //                 state: { 
-    //                     search: searchValue, 
-    //                     results: [], 
-    //                     searchType, 
-    //                     deliveryService, 
-    //                     cuisine, 
-    //                     timeRanges: selectedTimeRanges, 
-    //                     errorText: 'Error fetching results' } });
-    //             // Eventually, navigate should reflect above
-    //         }
-    //     }
-    // };
-
-    // CoreBanner.tsx
 
 const keyHandler = async (event) => {
     if (event.key === 'Enter' && searchValue !== '') {
@@ -121,9 +65,9 @@ const keyHandler = async (event) => {
             }
 
             if (searchType === 'restaurant') {
-                response = await fetch(`http://localhost:5001/api/searchRestaurant?${queryParams}`);
+                response = await fetch(`${API_BASE_URL}/api/searchRestaurant?${queryParams}`);
             } else if (searchType === 'dish') {
-                response = await fetch(`http://localhost:5001/api/searchDish?name=${encodeURIComponent(searchValue)}`);
+                response = await fetch(`${API_BASE_URL}/api/searchDish?name=${encodeURIComponent(searchValue)}`);
             }
 
             if (response.ok) {

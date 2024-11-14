@@ -10,6 +10,7 @@ import {
     Pressable, 
 } from 'react-native'
 import tw from 'twrnc';
+import { API_BASE_URL } from '../../../config.js';
 
 import { coreForm, coreStyles, ffColors } from '../CoreComponents/CoreStyles.tsx';
 
@@ -36,7 +37,7 @@ export default function PopularCards({fetchType}) {
     useEffect(() => {
         const restReq = async () => {
             try {
-                const response = await fetch(`http://localhost:5001/api/${fetchType}`, {
+                const response = await fetch(`${API_BASE_URL}/api/${fetchType}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -67,7 +68,7 @@ export default function PopularCards({fetchType}) {
         console.log("Searching for: " + name);
         try {
             // Send the request to your backend API
-            const response = await fetch('http://localhost:5001/api/searchRestaurant?name=' + encodeURIComponent(name));
+            const response = await fetch('${API_BASE_URL}/api/searchRestaurant?name=' + encodeURIComponent(name));
                 
             // Check if the response is OK and parse JSON
             if (response.ok) {

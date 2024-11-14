@@ -5,6 +5,7 @@ import { useAuth } from '../../UserComponents/Authorizer.tsx';
 import AccountLinkedAPIs from './AccountLinkedAPIs.tsx';
 import tw from 'twrnc';
 import { coreForm } from '../../CoreComponents/CoreStyles.tsx';
+import { API_BASE_URL } from '../../../../config.js';
 
 export default function Account() {
   const { user } = useAuth();
@@ -24,7 +25,7 @@ export default function Account() {
     const fetchProfileData = async () => {
      
       try {
-        const addressResponse = await fetch('http://localhost:5001/api/address/recent', {
+        const addressResponse = await fetch('${API_BASE_URL}/api/address/recent', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ export default function Account() {
         const addressData = await addressResponse.json();
         setCurrentAddress(`${addressData.street}, ${addressData.city}, ${addressData.state}, ${addressData.postalCode}, ${addressData.country}`);
 
-        const preferencesResponse = await fetch('http://localhost:5001/api/preferences', {
+        const preferencesResponse = await fetch('${API_BASE_URL}/api/preferences', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -74,7 +75,7 @@ export default function Account() {
 
     try {
       const address = newAddress.split(','); // Split address into components
-      const response = await fetch('http://localhost:5001/api/address', {
+      const response = await fetch('${API_BASE_URL}/api/address', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ export default function Account() {
     const selectedPreferences = Object.keys(dietaryPreferences).filter(key => dietaryPreferences[key]);
 
     try {
-      const response = await fetch('http://localhost:5001/api/preferences/update', {
+      const response = await fetch('${API_BASE_URL}/api/preferences/update', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

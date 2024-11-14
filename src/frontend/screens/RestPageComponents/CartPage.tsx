@@ -6,6 +6,7 @@ import { CartItem } from '../../../types/Cart'; // Adjusted path
 import { useAuth } from '../UserComponents/Authorizer.tsx'; // Authentication hook
 import CorePopup from '../CoreComponents/CorePopup.tsx'; // Popup component for login
 import { coreForm, ffColors } from '../CoreComponents/CoreStyles.tsx'; // Import colors for consistent styling
+import { API_BASE_URL } from '../../../config.js';
 
 const CartPage: React.FC = () => {
   const { cart, clearCart } = useCart(); // Destructure clearCart from useCart
@@ -56,7 +57,7 @@ const CartPage: React.FC = () => {
   };
 
   const checkLogin = async (service: string) => {
-    let fetchAddr = "http://localhost:5001/api/auth/app-status";
+    let fetchAddr = "${API_BASE_URL}/api/auth/app-status";
     
     try {
       const res = await fetch(fetchAddr, {
@@ -123,7 +124,7 @@ const CartPage: React.FC = () => {
 
     try {
       let response;
-      var fetchAddr = "http://localhost:5001/api/auth/app-login";
+      var fetchAddr = "${API_BASE_URL}/api/auth/app-login";
       response = await fetch(fetchAddr, {
         method: "POST",
         headers: {
@@ -182,7 +183,7 @@ const CartPage: React.FC = () => {
       const user = JSON.parse(userData);
       const token = user.token;
 
-      const response = await fetch('http://localhost:5001/api/cartroute/cart/create', {
+      const response = await fetch('${API_BASE_URL}/api/cartroute/cart/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

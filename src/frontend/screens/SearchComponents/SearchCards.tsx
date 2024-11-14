@@ -9,6 +9,7 @@ import {
   View,
   TextInput, // Add TextInput
 } from "react-native";
+import { API_BASE_URL } from '../../../config.js';
 
 import { useAuth } from "../UserComponents/Authorizer.tsx";
 import { ffColors } from "../CoreComponents/CoreStyles.tsx";
@@ -141,7 +142,7 @@ export default function SearchCards() {
 
     try {
       let response;
-      var fetchAddr = "http://localhost:5001/api/auth/app-login";
+      var fetchAddr = "${API_BASE_URL}/api/auth/app-login";
       response = await fetch(fetchAddr, {
         method: "POST",
         headers: {
@@ -187,7 +188,7 @@ export default function SearchCards() {
   };
 
   const checkLogin = async (service: string, item) => {
-    let fetchAddr = "http://localhost:5001/api/auth/app-status";
+    let fetchAddr = "${API_BASE_URL}/api/auth/app-status";
     
     try {
       const res = await fetch(fetchAddr, {
@@ -334,7 +335,7 @@ export default function SearchCards() {
   
     try {
       console.log('Sending POST request to /api/reviews');
-      const response = await fetch('http://localhost:5001/api/reviews', {
+      const response = await fetch('${API_BASE_URL}/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -380,7 +381,7 @@ export default function SearchCards() {
   const fetchReviews = async (restaurantID) => {
     setIsLoadingReviews(true);
     try {
-      const response = await fetch(`http://localhost:5001/api/reviews/restaurant/${restaurantID}`);
+      const response = await fetch(`${API_BASE_URL}/api/reviews/restaurant/${restaurantID}`);
       if (response.ok) {
         const reviews = await response.json();
         // Update restaurants state with fetched reviews
@@ -479,7 +480,7 @@ export default function SearchCards() {
   const goToDishRestaurants = async (dishName) => {
     try {
       const response = await fetch(
-        `http://localhost:5001/api/searchRestaurant?dish=${encodeURIComponent(
+        `${API_BASE_URL}/api/searchRestaurant?dish=${encodeURIComponent(
           dishName
         )}`
       );

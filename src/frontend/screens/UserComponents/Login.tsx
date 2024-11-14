@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Image, View } from 'react-native'
 import { useAuth } from "./Authorizer.tsx";
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../../config.js';
+
 // import { coreForm } from '../CoreComponents/CoreStyles.tsx';
 
 function Login() {
@@ -27,7 +29,7 @@ function Login() {
     setIsError(false);  // Reset error state
 
     try {
-      const res = await fetch('http://localhost:5001/api/auth/login', {
+      const res = await fetch('${API_BASE_URL}/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

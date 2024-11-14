@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import ConfirmModal from './ConfirmModal.tsx';
 import { CartItem, CartEntry } from '../../../types/Cart';
 import { ffColors } from '../CoreComponents/CoreStyles.tsx';
+import { API_BASE_URL } from '../../../config.js';
 
 interface MenuItemProps {
   item: string;
@@ -134,7 +135,7 @@ export default function RestPage() {
     }
 
     try {
-      const fetchAddr = 'http://localhost:5001/api/auth/app-deal';
+      const fetchAddr = '${API_BASE_URL}/api/auth/app-deal';
       const response = await fetch(fetchAddr, {
         method: 'GET',
         headers: {
