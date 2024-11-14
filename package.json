@@ -37,7 +37,7 @@
     "react-native-screens": "^3.34.0",
     "react-native-web": "^0.19.12",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "reactjs-popup": "^2.0.6",
     "string-similarity": "^4.0.4",
     "twrnc": "^4.5.1",
