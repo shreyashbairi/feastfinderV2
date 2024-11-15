@@ -17,10 +17,7 @@ describe('Auth Routes', function () {
 
   before(async function () {
     console.log('Connecting to:', MONGO_URI);
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URI);
   });
 
   after(async function () {

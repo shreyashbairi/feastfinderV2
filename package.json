@@ -43,15 +43,15 @@
     "twrnc": "^4.5.1",
     "web-vitals": "^2.1.4"
   },
-"scripts": {
-  "start": "node src/backend/server.js",                
-  "start-backend": "node src/backend/server.js",        
-  "start-frontend": "react-scripts start",              
-  "build": "react-scripts build",                       
-  "install:all": "npm install && cd src/backend && npm install", 
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-},
+  "scripts": {
+    "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "start-frontend": "react-scripts start",
+    "start-backend": "npm run start --prefix ./src/backend",
+    "install:all": "npm install && cd src/backend && npm install",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

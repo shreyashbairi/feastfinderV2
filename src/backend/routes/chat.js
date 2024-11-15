@@ -3,7 +3,8 @@
 import express from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
-import faqs from '../faqs.json' assert { type: 'json' };
+import fs from 'fs';
+const faqs = JSON.parse(fs.readFileSync(new URL('../faqs.json', import.meta.url), 'utf-8'));
 import natural from 'natural';
 import stringSimilarity from 'string-similarity';
 
