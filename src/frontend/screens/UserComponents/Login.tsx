@@ -44,6 +44,7 @@ function Login() {
         const data = await res.json();
         console.log('User logged in:', data);
         setUserToken(data.token, email);
+        console.log('Received token:', data.token);
         console.log(user);
         goToFeed()
         // Store token or redirect user

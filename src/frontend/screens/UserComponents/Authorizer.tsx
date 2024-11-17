@@ -35,6 +35,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ childr
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const user = JSON.parse(storedUser);
+      console.log('Stored user:', storedUser);
       setUser(user);
     }
 
@@ -99,6 +100,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({ childr
 
   const validateToken = async () => {
     console.log('in validateToken()');
+    console.log('Token being sent:', user?.token);  
     try {
       const response = await fetch(`${API_BASE_URL}/api/auth/protected`, {
         method: 'GET',
